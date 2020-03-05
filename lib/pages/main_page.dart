@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:HelloFlutter/data/data.dart';
 import 'package:HelloFlutter/event/touch_event.dart';
+import 'package:HelloFlutter/thread/singleton_mode.dart';
 import 'package:HelloFlutter/widget/clickable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -40,9 +41,10 @@ class MainPage {
           backgroundColor: Color(0xffffffff),
           onClick: (TapDownDetails details) {
             log('ClickableTextView onClick:' + details.toString());
-            content = 'clicked world';
+            CommonData.i().increase();
+            content = 'clicked world: ' + CommonData.i().getCount().toString();
           },
-        ).build(null),
+        ),
         EventWidgets(callback).getWidget(),
         Text(
           "缩小到五分之一的图片",
