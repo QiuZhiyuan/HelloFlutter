@@ -32,6 +32,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MainPage().getMainScaffold();
+    return MainPage(refresh).getMainScaffold();
+  }
+
+  void refresh() {
+    setState(() {});
   }
 }

@@ -1,4 +1,5 @@
 import 'package:HelloFlutter/data/data.dart';
+import 'package:HelloFlutter/event/touch_event.dart';
 import 'package:flutter/material.dart';
 
 //import 'package:flutter/material.dart';
@@ -7,6 +8,12 @@ import 'package:flutter/widgets.dart';
 class MainPage {
   double contentWidth;
   double contentHeight;
+
+  Function callback;
+
+  MainPage(Function callback) {
+    this.callback = callback;
+  }
 
   Widget getMainScaffold() {
     Scaffold scaffold = Scaffold(
@@ -22,6 +29,7 @@ class MainPage {
   Widget getContent() {
     return wrapperByScroller(Column(
       children: <Widget>[
+        EventWidgets(callback).getWidget(),
         Text(
           "缩小到五分之一的图片",
           style: TextStyle(
