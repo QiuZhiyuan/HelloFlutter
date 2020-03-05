@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:HelloFlutter/data/data.dart';
 import 'package:HelloFlutter/event/touch_event.dart';
+import 'package:HelloFlutter/widget/clickable_widgets.dart';
 import 'package:flutter/material.dart';
 
-//import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MainPage {
@@ -10,6 +12,8 @@ class MainPage {
   double contentHeight;
 
   Function callback;
+
+  static String content = 'hello world';
 
   MainPage(Function callback) {
     this.callback = callback;
@@ -29,6 +33,16 @@ class MainPage {
   Widget getContent() {
     return wrapperByScroller(Column(
       children: <Widget>[
+        ClickableTextView(
+          content,
+          width: 300,
+          height: 50,
+          backgroundColor: Color(0xffffffff),
+          onClick: (TapDownDetails details) {
+            log('ClickableTextView onClick:' + details.toString());
+            content = 'clicked world';
+          },
+        ).build(null),
         EventWidgets(callback).getWidget(),
         Text(
           "缩小到五分之一的图片",
