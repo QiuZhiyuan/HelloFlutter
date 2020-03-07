@@ -1,6 +1,6 @@
-import 'dart:ui';
 
 import 'package:HelloFlutter/pages/main_page.dart';
+import 'package:HelloFlutter/pages/open_new_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -32,7 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MainPage(refresh).getMainScaffold();
+//    return MainPage(refresh).getMainScaffold();
+  return FirstRoute();
   }
 
   void refresh() {
